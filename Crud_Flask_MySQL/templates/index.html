@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+</head>
+
+<style>
+    * {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    table,
+    th,
+    tr,
+    td {
+        border: 1px solid #595959;
+    }
+
+    table {
+        margin: 50px;
+    }
+
+    td {
+        padding: 5px 10px;
+    }
+</style>
+
+<body>
+
+    <h1>Contacts</h1>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <p>{{ message }}</p>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <form action="/add" method="post">
+        <input type="text" name="name" id="name" placeholder="Name">
+        <input type="text" name="lastName" id="lastName" placeholder="Last name">
+        <input type="number" name="phone" id="phone" placeholder="phone">
+        <input type="text" name="address" id="address" placeholder="address">
+
+        <button type="submit">Send</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Last Name</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contact in contacts %}
+            <tr>
+                <td>{{ contact.0 }}</td>
+                <td>{{ contact.1 }}</td>
+                <td>{{ contact.2 }}</td>
+                <td>{{ contact.3 }}</td>
+                <td>{{ contact.4 }}</td>
+                <td>
+                    <a href="/edit/{{contact.0}}">Edit</a>
+                    <a href="/delete/{{contact.0}}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+
+</html>

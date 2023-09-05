@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Edit</title>
+</head>
+
+<style>
+    * {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+</style>
+
+<body>
+    <h1>Editing</h1>
+
+    <form action="/update/{{ contact.0 }}" method="post">
+        <input type="text" name="name" id="name" placeholder="New name" value="{{ contact.1 }}">
+        <input type="text" name="lastName" id="lastName" placeholder="New last name" value="{{ contact.2 }}">
+        <input type="number" name="phone" id="phone" placeholder="New phone" value="{{ contact.3 }}">
+        <input type="text" name="address" id="address" placeholder="New address" value="{{ contact.4 }}">
+
+        <button type="submit">Update</button>
+    </form>
+</body>
+
+</html>
